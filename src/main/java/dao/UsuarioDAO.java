@@ -1,11 +1,14 @@
 package dao;
 
-import model.Usuario;
-import util.ConexionBD;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Usuario;
+import util.ConexionBD;
 
 public class UsuarioDAO {
 
@@ -36,7 +39,7 @@ public class UsuarioDAO {
             ps.setString(3, usuario.getUsername());
             ps.setString(4, usuario.getPassword());
             ps.setString(5, usuario.getCorreo());
-            ps.setString(6, usuario.getRol());
+            ps.setString(6, "CLIENTE");
             ps.setBoolean(7, usuario.isActivo());
 
             return ps.executeUpdate() > 0;

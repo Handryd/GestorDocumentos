@@ -26,6 +26,9 @@ public class ConexionBD {
             // Crear conexión
             conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
 
+            System.out.println("CONEXIÓN OK");
+            System.out.println("Base: " + conexion.getCatalog());
+
             System.out.println("Conexión exitosa a la base de datos.");
 
         } catch (ClassNotFoundException e) {
@@ -35,7 +38,8 @@ public class ConexionBD {
 
         } catch (SQLException e) {
 
-            System.err.println("Error al conectar con la base de datos.");
+            System.err.println("ERROR MYSQL:");
+            System.err.println(e.getMessage());
             e.printStackTrace();
         }
 

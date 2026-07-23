@@ -254,7 +254,7 @@
 
                         <tr>
                             <th>Usuario</th>
-                            <td><%= usuario.getUsuario() %></td>
+                            <td><%= usuario.getUsername() %></td>
                         </tr>
 
                         <tr>
@@ -264,7 +264,9 @@
 
                         <tr>
                             <th>Estado</th>
-                            <td><%= usuario.getEstado() %></td>
+                            <td>
+                                <%= usuario.isActivo() ? "Activo" : "Inactivo" %>
+                            </td>
                         </tr>
 
                     </table>

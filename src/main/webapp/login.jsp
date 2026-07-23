@@ -101,19 +101,6 @@
                         required>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">
-                    Tipo de usuario
-                </label>
-
-                <select name="rol" class="form-select" required>
-                    <option value="">Seleccione...</option>
-                    <option value="ADMINISTRADOR">Administrador</option>
-                    <option value="ASESOR">Asesor</option>
-                    <option value="CLIENTE">Cliente</option>
-                </select>
-            </div>
-
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">
                     Iniciar Sesión

@@ -129,10 +129,6 @@ public class Usuario implements Serializable {
         return "CLIENTE".equalsIgnoreCase(rol);
     }
 
-    public boolean esAsesor() {
-        return "ASESOR".equalsIgnoreCase(rol);
-    }
-
     public String getNombreCompleto() {
         return nombre + " " + apellido;
     }

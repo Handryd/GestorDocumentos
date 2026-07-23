@@ -94,20 +94,6 @@ public class AuthService {
     }
 
     // ==========================
-    // VALIDAR ASESOR
-    // ==========================
-    public boolean esAsesor(
-            Usuario usuario) {
-
-        return usuario != null
-                && usuario.isActivo()
-                && "ASESOR"
-                .equalsIgnoreCase(
-                        usuario.getRol()
-                );
-    }
-
-    // ==========================
     // VALIDAR ACCESO GENERAL
     // ==========================
     public boolean tieneAcceso(

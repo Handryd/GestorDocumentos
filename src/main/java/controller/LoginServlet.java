@@ -1,16 +1,15 @@
 package controller;
 
+import java.io.IOException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import model.Usuario;
 import service.AuthService;
-
-import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -46,48 +45,46 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String username =
-                request.getParameter("username");
+                request.getParameter("usuario");
 
         String password =
                 request.getParameter("password");
+        
 
-        Usuario usuario =
+        System.out.println("Intentando login:");
+        System.out.println("Usuario: " + username);
+
+
+        Usuario usuarioLogueado =
                 authService.login(
                         username,
                         password
                 );
 
-        if (usuario != null) {
+        if (usuarioLogueado != null) {
 
             HttpSession session =
                     request.getSession(true);
 
             session.setAttribute(
                     "usuario",
-                    usuario
+                    usuarioLogueado
             );
 
             session.setAttribute(
                     "nombreUsuario",
-                    usuario.getNombreCompleto()
+                    usuarioLogueado.getNombreCompleto()
             );
 
             session.setAttribute(
                     "rol",
-                    usuario.getRol()
+                    usuarioLogueado.getRol()
             );
 
             // Redirección según rol
-            switch (usuario.getRol().toUpperCase()) {
+            switch (usuarioLogueado.getRol().toUpperCase()) {
 
                 case "ADMINISTRADOR":
-                    response.sendRedirect(
-                            request.getContextPath()
-                                    + "/dashboard.jsp"
-                    );
-                    break;
-
-                case "ASESOR":
                     response.sendRedirect(
                             request.getContextPath()
                                     + "/dashboard.jsp"
