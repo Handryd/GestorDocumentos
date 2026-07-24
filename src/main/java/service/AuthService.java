@@ -180,6 +180,29 @@ public class AuthService {
     }
 
     // ==========================
+    // REGISTRAR NUEVO USUARIO
+    // ==========================
+        public boolean registrarUsuario(
+                Usuario usuario) {
+
+
+                if(!validarNuevoUsuario(usuario)){
+
+                        return false;
+
+                }
+
+
+                usuario.setRol("CLIENTE");
+
+                usuario.setActivo(true);
+
+
+                return usuarioDAO.registrarUsuario(usuario);
+
+}
+
+    // ==========================
     // OBTENER ROL
     // ==========================
     public String obtenerRol(

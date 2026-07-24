@@ -111,11 +111,23 @@
 
         <hr>
 
-        <div class="text-center">
-            <a href="index.jsp">
-                Volver al inicio
-            </a>
-        </div>
+     <div class="text-center">
+
+        <p class="mb-2">
+             ¿No tienes una cuenta?
+        </p>
+
+        <a href="registro">
+             Registrarse
+        </a>
+
+        <hr>
+
+        <a href="index.jsp">
+            Volver al inicio
+        </a>
+
+    </div>
 
     </div>
 

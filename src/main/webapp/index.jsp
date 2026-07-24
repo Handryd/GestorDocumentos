@@ -58,51 +58,6 @@
         </div>
     </div>
 
-    <!-- Módulos -->
-    <div class="container mb-5">
-
-        <div class="row g-4">
-
-            <div class="col-md-4">
-                <div class="card card-modulo shadow-sm">
-                    <div class="card-body text-center">
-                        <h4>Clientes</h4>
-                        <p>Registro y consulta de clientes.</p>
-                        <a href="clientes" class="btn btn-outline-primary">
-                            Acceder
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card card-modulo shadow-sm">
-                    <div class="card-body text-center">
-                        <h4>Expedientes</h4>
-                        <p>Control de documentos y expedientes.</p>
-                        <a href="#" class="btn btn-outline-primary">
-                            Próximamente
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card card-modulo shadow-sm">
-                    <div class="card-body text-center">
-                        <h4>Reportes</h4>
-                        <p>Visualización del avance documental.</p>
-                        <a href="#" class="btn btn-outline-primary">
-                            Próximamente
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
     <!-- Footer -->
     <footer class="bg-dark text-white text-center p-3">
         <p class="mb-0">

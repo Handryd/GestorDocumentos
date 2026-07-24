@@ -1,22 +1,21 @@
 package controller;
 
-import model.Cliente;
-import service.ClienteService;
+import java.io.IOException;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
-import java.util.List;
+import model.Cliente;
+import service.ClienteService;
 
 @WebServlet("/clientes")
 public class ClienteServlet extends HttpServlet {
 
     private ClienteService clienteService;
-
+           
     @Override
     public void init() {
         clienteService = new ClienteService();
@@ -26,7 +25,7 @@ public class ClienteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String accion = request.getParameter("accion");
 
         if (accion == null) {
