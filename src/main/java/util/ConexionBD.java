@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class ConexionBD {
 
     // Configuración de la base de datos
-    private static final String URL = "jdbc:mysql://localhost:33061/gestor_documentos";
+    private static final String URL = "jdbc:mysql://localhost:3306/gestor_documentos";
     private static final String USUARIO = "root";
-    private static final String PASSWORD = "HANDRYD20";
+    private static final String PASSWORD = "";
 
     /**
      * Obtiene una conexión a la base de datos

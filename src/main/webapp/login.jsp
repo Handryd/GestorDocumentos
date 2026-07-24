@@ -60,12 +60,12 @@
 
         <!-- Mensajes -->
         <%
-            String mensaje = (String) request.getAttribute("mensaje");
-            if(mensaje != null){
+            String error = (String) request.getAttribute("error");
+            if (error != null) {
         %>
 
         <div class="alert alert-danger">
-            <%= mensaje %>
+            <%= error %>
         </div>
 
         <%

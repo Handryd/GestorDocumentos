@@ -94,6 +94,20 @@ public class AuthService {
     }
 
     // ==========================
+    // VALIDAR USUARIO
+    // ==========================
+    public boolean esUsuario(
+            Usuario usuario) {
+
+        return usuario != null
+                && usuario.isActivo()
+                && "USUARIO"
+                .equalsIgnoreCase(
+                        usuario.getRol()
+                );
+    }
+
+    // ==========================
     // VALIDAR ACCESO GENERAL
     // ==========================
     public boolean tieneAcceso(

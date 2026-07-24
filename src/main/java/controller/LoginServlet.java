@@ -21,107 +21,50 @@ public class LoginServlet extends HttpServlet {
         authService = new AuthService();
     }
 
-    // ==========================
-    // MOSTRAR LOGIN
-    // ==========================
     @Override
     protected void doGet(
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.getRequestDispatcher(
-                "/login.jsp"
-        ).forward(request, response);
+        request.getRequestDispatcher("/login.jsp")
+                .forward(request, response);
     }
 
-    // ==========================
-    // INICIAR SESIÓN
-    // ==========================
     @Override
     protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        String username =
-                request.getParameter("usuario");
+        String username = request.getParameter("usuario");
+        String password = request.getParameter("password");
 
-        String password =
-                request.getParameter("password");
-        
-
-        System.out.println("Intentando login:");
-        System.out.println("Usuario: " + username);
-
-
-        Usuario usuarioLogueado =
-                authService.login(
-                        username,
-                        password
-                );
+        Usuario usuarioLogueado = authService.login(username, password);
 
         if (usuarioLogueado != null) {
+            String rol = usuarioLogueado.getRol();
 
-            HttpSession session =
-                    request.getSession(true);
-
-            session.setAttribute(
-                    "usuario",
-                    usuarioLogueado
-            );
-
-            session.setAttribute(
-                    "nombreUsuario",
-                    usuarioLogueado.getNombreCompleto()
-            );
-
-            session.setAttribute(
-                    "rol",
-                    usuarioLogueado.getRol()
-            );
-
-            // Redirección según rol
-            switch (usuarioLogueado.getRol().toUpperCase()) {
-
-                case "ADMINISTRADOR":
-                    response.sendRedirect(
-                            request.getContextPath()
-                                    + "/dashboard.jsp"
-                    );
-                    break;
-
-                case "CLIENTE":
-                    response.sendRedirect(
-                            request.getContextPath()
-                                    + "/dashboard.jsp"
-                    );
-                    break;
-
-                default:
-                    session.invalidate();
-
-                    request.setAttribute(
-                            "error",
-                            "Rol no válido."
-                    );
-
-                    request.getRequestDispatcher(
-                            "/login.jsp"
-                    ).forward(request, response);
-                    break;
+            if (rol == null || rol.isBlank()) {
+                request.setAttribute("error", "Rol no válido.");
+                request.getRequestDispatcher("/login.jsp")
+                        .forward(request, response);
+                return;
             }
 
-        } else {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("usuario", usuarioLogueado);
+            session.setAttribute("nombreUsuario", usuarioLogueado.getNombreCompleto());
+            session.setAttribute("rol", rol);
 
-            request.setAttribute(
-                    "error",
-                    "Usuario o contraseña incorrectos."
+            response.sendRedirect(
+                    request.getContextPath() + "/dashboard.jsp"
             );
-
-            request.getRequestDispatcher(
-                    "/login.jsp"
-            ).forward(request, response);
+            return;
         }
+
+        request.setAttribute("error", "Usuario o contraseña incorrectos.");
+        request.getRequestDispatcher("/login.jsp")
+                .forward(request, response);
     }
 }

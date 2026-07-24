@@ -90,6 +90,12 @@
                 📊 Reportes
             </a>
 
+            <% if (usuario.esAdministrador()) { %>
+            <a href="usuarios">
+                👥 Usuarios
+            </a>
+            <% } %>
+
             <hr>
 
             <a href="logout">
@@ -106,7 +112,7 @@
 
                 <h2>
                     Bienvenido,
-                    <%= usuario.getNombre() %>
+                    <%= usuario.getNombreCompleto() %>
                 </h2>
 
                 <span class="badge bg-primary fs-6">
@@ -231,6 +237,25 @@
 
             </div>
 
+            <% if (usuario.esAdministrador()) { %>
+            <div class="row g-4 mt-1">
+                <div class="col-md-3">
+                    <div class="card shadow card-dashboard border-warning">
+                        <div class="card-body text-center">
+                            <h1>👥</h1>
+                            <h5>Usuarios</h5>
+                            <p>
+                                Alta de cuentas con rol Usuario, Cliente o Administrador.
+                            </p>
+                            <a href="usuarios" class="btn btn-warning">
+                                Gestionar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+
             <hr class="mt-5">
 
             <!-- Información -->
@@ -249,7 +274,7 @@
 
                         <tr>
                             <th>Nombre</th>
-                            <td><%= usuario.getNombre() %></td>
+                            <td><%= usuario.getNombreCompleto() %></td>
                         </tr>
 
                         <tr>

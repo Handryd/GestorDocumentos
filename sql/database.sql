@@ -19,15 +19,23 @@ CREATE TABLE usuarios (
 
     id INT AUTO_INCREMENT PRIMARY KEY,
 
-    usuario VARCHAR(50) NOT NULL UNIQUE,
+    nombre VARCHAR(100) NOT NULL,
+
+    apellido VARCHAR(100) NOT NULL DEFAULT '',
+
+    username VARCHAR(50) NOT NULL UNIQUE,
 
     password VARCHAR(255) NOT NULL,
+
+    correo VARCHAR(100),
 
     rol ENUM(
         'ADMINISTRADOR',
         'CLIENTE',
-        'ASESOR'
-    ) NOT NULL
+        'USUARIO'
+    ) NOT NULL,
+
+    activo BOOLEAN NOT NULL DEFAULT TRUE
 
 );
 
@@ -120,15 +128,23 @@ CREATE TABLE documentos (
 
 INSERT INTO usuarios
 (
-    usuario,
+    nombre,
+    apellido,
+    username,
     password,
-    rol
+    correo,
+    rol,
+    activo
 )
 VALUES
 (
+    'Admin',
+    'Sistema',
     'admin',
     'admin123',
-    'ADMINISTRADOR'
+    'admin@gestor.com',
+    'ADMINISTRADOR',
+    TRUE
 );
 
 -- =====================================================
