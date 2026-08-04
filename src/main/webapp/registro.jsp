@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión | Gestor de Documentos</title>
+    <title>Registro | Gestor de Documentos</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -13,16 +13,17 @@
             background-color: #f4f6f9;
         }
 
-        .login-container {
+        .registro-container {
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px 0;
         }
 
-        .login-card {
+        .registro-card {
             width: 100%;
-            max-width: 450px;
+            max-width: 520px;
             padding: 30px;
             border-radius: 15px;
             background: white;
@@ -45,14 +46,14 @@
 </head>
 <body>
 
-<div class="container login-container">
+<div class="container registro-container">
 
-    <div class="login-card">
+    <div class="registro-card">
 
         <div class="logo">Gestor de Documentos</div>
 
         <div class="subtitle">
-            Ingrese sus credenciales para continuar
+            Cree su cuenta. Se registrará con rol <strong>Usuario</strong>.
         </div>
 
         <%
@@ -62,47 +63,38 @@
         <div class="alert alert-danger"><%= error %></div>
         <%
             }
-
-<<<<<<< HEAD
-        <div class="alert alert-danger">
-            <%= error %>
-        </div>
-
-=======
-            String mensaje = (String) request.getAttribute("mensaje");
-            if (mensaje != null) {
-        %>
-        <div class="alert alert-success"><%= mensaje %></div>
->>>>>>> ad124b3 (Registro de usuario en el login)
-        <%
-            }
         %>
 
-        <form action="<%= request.getContextPath() %>/login" method="post">
+        <form action="<%= request.getContextPath() %>/registro" method="post">
 
             <div class="mb-3">
-                <label class="form-label">Usuario</label>
-                <input
-                        type="text"
-                        name="usuario"
-                        class="form-control"
-                        placeholder="Ingrese su usuario"
-                        required>
+                <label class="form-label">Nombre</label>
+                <input type="text" name="nombre" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Apellido</label>
+                <input type="text" name="apellido" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Usuario de acceso</label>
+                <input type="text" name="usuario" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Correo</label>
+                <input type="email" name="correo" class="form-control">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Contraseña</label>
-                <input
-                        type="password"
-                        name="password"
-                        class="form-control"
-                        placeholder="Ingrese su contraseña"
-                        required>
+                <input type="password" name="password" class="form-control" required>
             </div>
 
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">
-                    Iniciar Sesión
+                    Registrarse
                 </button>
             </div>
 
@@ -111,9 +103,7 @@
         <hr>
 
         <div class="text-center">
-            <a href="registro.jsp">¿No tiene cuenta? Registrarse</a>
-            <br>
-            <a href="index.jsp" class="mt-2 d-inline-block">Volver al inicio</a>
+            <a href="login.jsp">¿Ya tiene cuenta? Iniciar sesión</a>
         </div>
 
     </div>

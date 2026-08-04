@@ -45,11 +45,68 @@ public class LoginServlet extends HttpServlet {
         if (usuarioLogueado != null) {
             String rol = usuarioLogueado.getRol();
 
+<<<<<<< HEAD
             if (rol == null || rol.isBlank()) {
                 request.setAttribute("error", "Rol no válido.");
                 request.getRequestDispatcher("/login.jsp")
                         .forward(request, response);
                 return;
+=======
+            HttpSession session =
+                    request.getSession(true);
+
+            session.setAttribute(
+                    "usuario",
+                    usuarioLogueado
+            );
+
+            session.setAttribute(
+                    "nombreUsuario",
+                    usuarioLogueado.getNombreCompleto()
+            );
+
+            session.setAttribute(
+                    "rol",
+                    usuarioLogueado.getRol()
+            );
+
+            // Redirección según rol
+            switch (usuarioLogueado.getRol().toUpperCase()) {
+
+                case "ADMINISTRADOR":
+                    response.sendRedirect(
+                            request.getContextPath()
+                                    + "/dashboard.jsp"
+                    );
+                    break;
+
+                case "CLIENTE":
+                    response.sendRedirect(
+                            request.getContextPath()
+                                    + "/dashboard.jsp"
+                    );
+                    break;
+
+                case "USUARIO":
+                    response.sendRedirect(
+                            request.getContextPath()
+                                    + "/dashboard.jsp"
+                    );
+                    break;
+
+                default:
+                    session.invalidate();
+
+                    request.setAttribute(
+                            "error",
+                            "Rol no válido."
+                    );
+
+                    request.getRequestDispatcher(
+                            "/login.jsp"
+                    ).forward(request, response);
+                    break;
+>>>>>>> ad124b3 (Registro de usuario en el login)
             }
 
             HttpSession session = request.getSession(true);
